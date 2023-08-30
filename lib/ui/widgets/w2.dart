@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controllers/controllers.dart';
 
 class W2 extends StatelessWidget {
   const W2({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CountController controller = Get.find();
     return Container(
       color: Colors.deepOrange,
-      child: const Column(
+      child:  Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Value'),
-          ElevatedButton(onPressed: null, child: Text('Reset'))
+          Obx(()=>Text(controller.count.toString())) ,
+          ElevatedButton(onPressed: (){ controller.reset();}, child: Text('Reset'))
         ],
       ),
     );
